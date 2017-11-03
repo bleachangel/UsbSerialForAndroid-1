@@ -36,14 +36,15 @@ import java.nio.ByteBuffer;
  * @author mike wakerly (opensource@hoho.com)
  */
 public class SerialInputOutputManager implements Runnable {
+
     private static final String TAG = SerialInputOutputManager.class.getSimpleName();
     private static final boolean DEBUG = true;
-    private static final int DEFAULT_INTERVAL = 500;
 
     private static final int READ_WAIT_MILLIS = 200;
     private static final int BUFSIZ = 4096;
 
     private final UsbSerialPort mDriver;
+
     private final ByteBuffer mReadBuffer = ByteBuffer.allocate(BUFSIZ);
 
     // Synchronized by 'mWriteBuffer'
@@ -52,7 +53,7 @@ public class SerialInputOutputManager implements Runnable {
     private State mState = State.STOPPED;
     // Synchronized by 'this'
     private Listener mListener;
-    private int mInterval = DEFAULT_INTERVAL;
+    private int period = 500;
 
     /**
      * Creates a new instance with no listener.
@@ -67,6 +68,10 @@ public class SerialInputOutputManager implements Runnable {
     public SerialInputOutputManager(UsbSerialPort driver, Listener listener) {
         mDriver = driver;
         mListener = listener;
+    }
+
+    public void setPeriod(int period){
+        this.period = period;
     }
 
     public synchronized Listener getListener() {
@@ -118,7 +123,7 @@ public class SerialInputOutputManager implements Runnable {
                     break;
                 }
                 step();
-                Thread.sleep(500);
+                Thread.sleep(this.period);
             }
         } catch (Exception e) {
             Log.w(TAG, "Run ending due to exception: " + e.getMessage(), e);
@@ -186,11 +191,4 @@ public class SerialInputOutputManager implements Runnable {
         void onRunError(Exception e);
     }
 
-    public int getInterval() {
-        return mInterval;
-    }
-
-    public void setInterval(int interval) {
-        this.mInterval = interval;
-    }
 }

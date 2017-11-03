@@ -65,7 +65,9 @@ public class UsbSerialProber {
      */
     public List<UsbSerialDriver> findAllDrivers(final UsbManager usbManager) {
         final List<UsbSerialDriver> result = new ArrayList<UsbSerialDriver>();
-
+        if (usbManager.getDeviceList() == null || usbManager.getDeviceList().size() == 0) {
+            return result;
+        }
         for (final UsbDevice usbDevice : usbManager.getDeviceList().values()) {
             final UsbSerialDriver driver = probeDevice(usbDevice);
             if (driver != null) {
