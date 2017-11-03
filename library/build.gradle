@@ -1,13 +1,54 @@
 apply plugin: 'com.android.library'
+apply from: 'gradle.properties'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion 12
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+    }
+
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 }
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'UsbSerialForAndroid'
+
+    publishedGroupId = 'me.zongren'
+    libraryName = 'UsbSerialForAndroid'
+    artifact = 'usbserialforandroid'
+
+    libraryDescription = 'Useful tool to communicate with usb devices.'
+
+    siteUrl = 'https://github.com/zongren/UsbSerialForAndroid'
+    gitUrl = 'https://github.com/zongren/UsbSerialForAndroid.git'
+
+    libraryVersion = VERSION_NAME
+
+    developerId = 'zongren'
+    developerName = '宗仁'
+    developerEmail = 'zongren@live.com'
+
+    licenseName = 'The MIT License (MIT)'
+    licenseUrl = 'https://raw.githubusercontent.com/zongren/UsbSerialForAndroid/master/LICENSE'
+    allLicenses = ["MIT"]
+}
+
+apply from: 'https://raw.githubusercontent.com/zongren/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/zongren/JCenter/master/bintrayv1.gradle'

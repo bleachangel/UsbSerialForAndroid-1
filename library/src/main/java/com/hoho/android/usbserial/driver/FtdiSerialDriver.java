@@ -1,22 +1,22 @@
 /* Copyright 2011-2013 Google Inc.
- * Copyright 2013 mike wakerly <opensource@hoho.com>
+Copyright 2013 mike wakerly <opensource@hoho.com>
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
- * USA.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+USA.
  *
- * Project home page: https://github.com/mik3y/usb-serial-for-android
+Project home page: https://github.com/mik3y/usb-serial-for-android
  */
 
 package com.hoho.android.usbserial.driver;
@@ -55,8 +55,6 @@ import java.util.Map;
  *   http://www.intra2net.com/en/developer/libftdi
  * </pre>
  * <p>
- * </p>
- * <p>
  * Some FTDI devices have not been tested; see later listing of supported and
  * unsupported devices. Devices listed as "supported" support the following
  * features:
@@ -67,24 +65,21 @@ import java.util.Map;
  * <li>Setting serial line parameters (see
  * {@link CommonUsbSerialPort#setParameters(int, int, int, int)}.</li>
  * </ul>
- * </p>
  * <p>
  * Supported and tested devices:
  * <ul>
- * <li>{@value DeviceType#TYPE_R}</li>
+ * <li>DeviceType#TYPE_R</li>
  * </ul>
- * </p>
  * <p>
  * Unsupported but possibly working devices (please contact the author with
  * feedback or patches):
  * <ul>
- * <li>{@value DeviceType#TYPE_2232C}</li>
- * <li>{@value DeviceType#TYPE_2232H}</li>
- * <li>{@value DeviceType#TYPE_4232H}</li>
- * <li>{@value DeviceType#TYPE_AM}</li>
- * <li>{@value DeviceType#TYPE_BM}</li>
+ * <li>DeviceType#TYPE_2232C</li>
+ * <li>DeviceType#TYPE_2232H}</li>
+ * <li>DeviceType#TYPE_4232H</li>
+ * <li>DeviceType#TYPE_AM</li>
+ * <li>DeviceType#TYPE_BM</li>
  * </ul>
- * </p>
  *
  * @author mike wakerly (opensource@hoho.com)
  * @see <a href="https://github.com/mik3y/usb-serial-for-android">USB Serial
